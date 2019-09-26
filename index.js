@@ -46,7 +46,8 @@ function refreshDeviceList(){
 	//deviceList =[];
 	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
 	if (cordova.platformId === 'android') { // Android filtering is broken
-		ble.scan([], 5, onDiscoverDevice, onError);
+		//ble.scan([], 5, onDiscoverDevice, onError);
+		onDiscoverDevice();
 	} else {
 		//alert("Disconnected");
 		ble.scan([blue.serviceUUID], 5, onDiscoverDevice, onError);
@@ -55,6 +56,8 @@ function refreshDeviceList(){
 
 
 function onDiscoverDevice(device){
+	//Cheat device.name
+	device.name= "GruppeIoT";
 	if(device.name == "GruppeIoT" || device.name == "Elektronik"){
 		
 		var listItem = document.createElement('li');

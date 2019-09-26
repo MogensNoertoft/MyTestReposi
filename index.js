@@ -66,11 +66,11 @@ function onDiscoverDevice(device){
         var xhttp;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200) {
+            if(this.status == 200) {
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "10.120.172.138/gettilbud.php?g="+device.name, true);
+        xhttp.open("GET", "10.120.172.138/DBDisplay.php?selectedgroup=WHERE VareGruppe = 'frugtgrønt' OR VareGruppe = 'radiotv'", true);
         xhttp.send();
 	}
     

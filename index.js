@@ -47,7 +47,8 @@ function refreshDeviceList(){
 	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
 	if (cordova.platformId === 'android') { // Android filtering is broken
 		//ble.scan([], 5, onDiscoverDevice, onError);
-		onDiscoverDevice();
+		alert("onDiscoverDevice");
+		onDiscoverDevice;
 	} else {
 		//alert("Disconnected");
 		ble.scan([blue.serviceUUID], 5, onDiscoverDevice, onError);
@@ -73,7 +74,7 @@ function onDiscoverDevice(device){
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "10.120.172.138/DBDisplay.php?selectedgroup=WHERE VareGruppe = 'frugtgrønt' OR VareGruppe = 'radiotv'", true);
+        xhttp.open("POST", "172.20.10.4/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
         xhttp.send();
 	}
     

@@ -145,7 +145,7 @@ function closeNav() {
 }
 
 function test(){
-	var url='http://www.google.com';	
+	var url='http://172.20.10.4/DBDisplay.php';	
 	openBrowser(url);
 }
 

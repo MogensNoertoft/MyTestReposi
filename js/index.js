@@ -145,7 +145,9 @@ function closeNav() {
 }
 
 function test(){
-	var url='http://10.120.181.3/DBDisplay.php' + selectgroup(['radiotv']);	
+	str=selectgroup(['radiotv']);	
+	//alert(str);
+	var url='http://10.120.181.3/DBDisplay.php?selectedgroup=' + str;
 	openBrowser(url);
 }
 

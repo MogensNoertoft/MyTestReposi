@@ -74,7 +74,7 @@ function onDiscoverDevice(device){
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };
-        xhttp.open("POST", "172.20.10.4/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
+        xhttp.open("POST", "172.20.10.3/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
         xhttp.send();
 	}
     

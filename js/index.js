@@ -30,7 +30,7 @@ var bleDeviceName;
 var deviceList =[];
 var list = document.getElementById("bleDeviceList");
 
-setTimeout("window.location.reload();",20000); //reload siden hvert 20. sekund. Dermed genindlæses Bluetooth-liste
+setTimeout("window.location.reload();",5000); //reload siden hvert 20. sekund. Dermed genindlæses Bluetooth-liste
  
 function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
@@ -42,7 +42,7 @@ function onLoad(){
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
-	var ref = cordova.InAppBrowser.open('http://localhost/DBdisplay.php', '_blank', 'location=yes');
+	var ref = cordova.InAppBrowser.open('http://localhost/DBdisplay.php' , '_blank', 'location=yes');
 	ref.show();
 }
 
@@ -145,7 +145,7 @@ function closeNav() {
 }
 
 function test(){
-	var url='http://10.120.181.3/DBDisplay.php';	
+	var url='http://10.120.181.3/DBDisplay.php' + selectgroup(['radiotv']);	
 	openBrowser(url);
 }
 
@@ -155,3 +155,21 @@ function openBrowser(url) {
    var ref = cordova.InAppBrowser.open(url, target, options);
 }
 
+function selectgroup(grupper) //grupper i DB hedder PT frugtgrønt og radiotv
+{
+	var str="";
+	if(grupper.length>0)
+		for(var i=0;i<grupper.length;i++)
+		{
+			if(i<1)
+				str = "WHERE VareGruppe = '" + grupper[i] + "'";
+			else
+				str = str + " OR VareGruppe = '" + grupper[i] + "'";
+		}
+	else 
+		str="";
+	return str;
+	//document.getElementById("selectedgroup").value = str;
+	//alert(document.getElementById("selectedgroup").value);
+	//document.getElementById("selectform").submit();
+}

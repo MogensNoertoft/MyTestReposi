@@ -71,7 +71,7 @@ function onDiscoverDevice(device){
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
 			document.getElementById("debugDiv").innerHTML += "onreadystatechange"; 
-			document.getElementById("debugDiv").innerHTML += this.readyState + this.status + <br>;
+			document.getElementById("debugDiv").innerHTML += String(this.readyState) + String(this.status)+ "<br>";
             if(this.readyState == 4 && this.status == 200) {
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }

@@ -47,7 +47,7 @@ function refreshDeviceList(){
 	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
 	if (cordova.platformId === 'android') { // Android filtering is broken
 		//ble.scan([], 5, onDiscoverDevice, onError);
-		alert("onDiscoverDevice");
+		//alert("onDiscoverDevice");
 		onDiscoverDevice;
 	} else {
 		//alert("Disconnected");
@@ -58,8 +58,8 @@ function refreshDeviceList(){
 
 function onDiscoverDevice(device){
 	//Cheat device.name
-	device.name= "GruppeIoT";
-	if(device.name == "GruppeIoT" || device.name == "Elektronik"){
+	//device.name= "GruppeIoT";
+	if(device.name == "radiotv" || device.name == "Elektronik"){
 		
 		var listItem = document.createElement('li');
         html = device.name;
@@ -70,7 +70,7 @@ function onDiscoverDevice(device){
         var xhttp;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-            if(this.status == 200) {
+            if(this.readyState == 4 && this.status == 200) {
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };

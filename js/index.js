@@ -70,6 +70,7 @@ function onDiscoverDevice(device){
 	//Cheat device.name
 	//device.name= "GruppeIoT";
 	if(device.name == "radiotv" || device.name == "Elektronik"){
+		test();
 		
 		var listItem = document.createElement('li');
         html = device.name;
@@ -142,3 +143,15 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "-8px";
   document.getElementById("enhed").style.marginLeft = "-8px";
 }
+
+function test(){
+	var url='http://www.google.com';	
+	openBrowser(url);
+}
+
+function openBrowser(url) {
+   var target = '_blank';
+   var options = "location=no"
+   var ref = cordova.InAppBrowser.open(url, target, options);
+}
+

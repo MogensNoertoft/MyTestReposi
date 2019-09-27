@@ -36,13 +36,19 @@ function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
     bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
 	
-	String html = "<iframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"http://172.20.10.4/DBdisplay.php\" ></iframe>";
-	document.getElementById("tilbud").innerHTML = webview.loadData(html, "text/html", null);
-
+	//String html = "<iframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"http://172.20.10.4/DBdisplay.php\" ></iframe>";
+	//document.getElementById("tilbud").innerHTML = webview.loadData(html, "text/html", null);
+	window.open = codova.InAppBrowser.open;
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	
+	var ref = cordova.InAppBrowser.open('http://localhost/DBdisplay.php', '_blank', 'location=yes');
+	ref.show();
 }
 
 function onDeviceReady(){
 	refreshDeviceList();
+	console.log("window.open works well");
 }
 
 	 

@@ -67,7 +67,7 @@ function onDiscoverDevice(device){
         listItem.classList.add('active');
 		document.getElementById("bleDeviceList").appendChild(listItem);
         
-        var xhttp;
+        /*var xhttp;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
 			x = document.getElementById("debugDiv");
@@ -82,8 +82,8 @@ function onDiscoverDevice(device){
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };
-        xhttp.open("POST", "172.20.10.3/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
-        xhttp.send();
+        xhttp.open("GET", "172.20.10.3/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
+        xhttp.send(); */
 	}
     
     

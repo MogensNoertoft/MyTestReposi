@@ -75,6 +75,9 @@ function onDiscoverDevice(device){
 			x.innerHTML += String(this.readyState) + String(this.status)+ "<br>";
             if(this.readyState == 4 && this.status == 0) {
 				x.innerHTML += String(this.response);
+				
+				if(this.response == "")
+					this.response += "<P>vores data er ikke kommet</P>";
 			
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }

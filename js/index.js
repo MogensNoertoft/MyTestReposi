@@ -150,7 +150,7 @@ function test(){
 }
 
 function openBrowser(url) {
-   var target = '_system';
+   var target = '_blank';
    var options = "location=no"
    var ref = cordova.InAppBrowser.open(url, target, options);
 }

@@ -72,7 +72,7 @@ function onDiscoverDevice(device){
         xhttp.onreadystatechange = function() {
 			document.getElementById("debugDiv").innerHTML += "onreadystatechange"; 
 			document.getElementById("debugDiv").innerHTML += String(this.readyState) + String(this.status)+ "<br>";
-            if(this.readyState == 4 && this.status == 200) {
+            if(this.readyState == 4 && this.status == 0) {
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };

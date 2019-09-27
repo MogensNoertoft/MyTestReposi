@@ -145,7 +145,7 @@ function closeNav() {
 }
 
 function test(){
-	var url='http://172.20.10.4/DBDisplay.php';	
+	var url='http://10.120.181.3/DBDisplay.php';	
 	openBrowser(url);
 }
 

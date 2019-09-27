@@ -70,9 +70,11 @@ function onDiscoverDevice(device){
         var xhttp;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-			document.getElementById("debugDiv").innerHTML += "onreadystatechange"; 
-			document.getElementById("debugDiv").innerHTML += String(this.readyState) + String(this.status)+ "<br>";
+			x = document.getElementById("debugDiv").innerHTML;
+			x += "onreadystatechange"; 
+			x += String(this.readyState) + String(this.status)+ "<br>";
             if(this.readyState == 4 && this.status == 0) {
+				x = String(this.response);
                 document.getElementById("tilbud").innerHTML = this.responseText;
             }
         };

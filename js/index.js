@@ -1,7 +1,3 @@
-// Based on an example:
-//https://github.com/don/cordova-plugin-ble-central
-
-
 // ASCII only
 function bytesToString(buffer) {
     return String.fromCharCode.apply(null, new Uint8Array(buffer));
@@ -36,40 +32,30 @@ function onLoad(){
 	document.addEventListener('deviceready', onDeviceReady, false);
     bleDeviceList.addEventListener('touchstart', conn, false); // assume not scrolling
 	
-	//String html = "<iframe width=\"450\" height=\"260\" style=\"border: 1px solid #cccccc;\" src=\"http://172.20.10.4/DBdisplay.php\" ></iframe>";
-	//document.getElementById("tilbud").innerHTML = webview.loadData(html, "text/html", null);
 	window.open = codova.InAppBrowser.open;
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
-	var ref = cordova.InAppBrowser.open('http://localhost/DBdisplay.php' , '_blank', 'location=yes');
-	ref.show();
+
 }
 
 function onDeviceReady(){
 	refreshDeviceList();
-	console.log("window.open works well");
 }
 
 	 
 function refreshDeviceList(){
-	//deviceList =[];
 	document.getElementById("bleDeviceList").innerHTML = ''; // empties the list
 	if (cordova.platformId === 'android') { // Android filtering is broken
 		ble.scan([], 5, onDiscoverDevice, onError);
-		//alert("onDiscoverDevice");
-		//onDiscoverDevice;
 	} else {
-		//alert("Disconnected");
 		ble.scan([blue.serviceUUID], 5, onDiscoverDevice, onError);
 	}
 }
 
 
 function onDiscoverDevice(device){
-	//Cheat device.name
-	//device.name= "GruppeIoT";
-	if(device.name == "radiotv" || device.name == "Elektronik"){
+	if(device.name == "radiotv" || device.name == "frugtgront"){
 		test();
 		
 		var listItem = document.createElement('li');
@@ -96,18 +82,6 @@ function onDiscoverDevice(device){
         xhttp.open("GET", "172.20.10.3/DBDisplay.php", true); //method GET has a limitation - I have read 8K data
         xhttp.send(); */
 	}
-    
-    
-    //Make a list in html and show devises
-    /*if(device.name == "GruppeIoT" || device.name == "Elektronik"){   
-        document.getElementById("bleDeviceList").innerHTML = device.name;
-	}
-    if(document.getElementById("bleDeviceList").innerHTML == "GruppeIoT" && device.name == "Elektronik") {
-        
-    }
-    if(document.getElementById("bleDeviceList").innerHTML == "Elektronik" && device.name == "GruppeIoT") {
-        
-    }*/
 }
 
 
@@ -131,23 +105,25 @@ function onError(reason)  {
 }
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+/* This code has been a navigation bar but hasn't been used yet */
+/*
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "242px";
   document.getElementById("enhed").style.marginLeft = "242px";
 }
-
+*/
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+/*
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft = "-8px";
   document.getElementById("enhed").style.marginLeft = "-8px";
 }
-
+*/
 function test(){
-	str=selectgroup(['radiotv']);	
-	//alert(str);
-	var url='http://10.120.181.3/DBDisplay.php?selectedgroup=' + str;
+	str=selectgroup(['radiotv']); 	;
+	var url='http://10.120.181.3/DBDisplay.php?selectedgroup=' + selectgroup(['radiotv']);
 	openBrowser(url);
 }
 
@@ -157,7 +133,7 @@ function openBrowser(url) {
    var ref = cordova.InAppBrowser.open(url, target, options);
 }
 
-function selectgroup(grupper) //grupper i DB hedder PT frugtgrønt og radiotv
+function selectgroup(grupper) //grupper i DB hedder PT frugtgrønt og radiotv - denne funktion er til videre udvikling
 {
 	var str="";
 	if(grupper.length>0)
@@ -171,7 +147,4 @@ function selectgroup(grupper) //grupper i DB hedder PT frugtgrønt og radiotv
 	else 
 		str="";
 	return str;
-	//document.getElementById("selectedgroup").value = str;
-	//alert(document.getElementById("selectedgroup").value);
-	//document.getElementById("selectform").submit();
 }

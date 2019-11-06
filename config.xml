@@ -17,10 +17,8 @@
 
     <content src="index.html" />
 	
-	
-	<gap:plugin name="cordova-plugin-ble-central" source="npm" />
-	<preference name="phonegap-version" value="cli-6.1.0" />
-        <variable name="BLUETOOTH_USAGE_DESCRIPTION" value="Bluetooth development purposes" />
+	<plugin name="cordova-plugin-ble-central" spec="^1.1.4">
+	<variable name="BLUETOOTH_USAGE_DESCRIPTION" value="Bluetooth development purposes" />
     </plugin>
 
 	 <plugin name="cordova-plugin-inappbrowser" spec="~2.0.1" />
